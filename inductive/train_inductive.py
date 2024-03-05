@@ -40,7 +40,7 @@ from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_
 import random
 import umap
 import seaborn as sns
-from utils.weights_gen import class_weights
+from utils.mask import class_weights_tensor
 import matplotlib.pyplot as plt
 
 # Set seeds for reproducibility
@@ -96,7 +96,7 @@ for j in range(30):
 #print(label0_count)
 
 # Convert class weights to a PyTorch tensor
-class_weights_tensor = torch.tensor(class_weights, dtype=torch.float32).to(device)
+class_weights_tensor = class_weights_tensor.to(device)
 
 class MyGraphDataset(Dataset):
     def __init__(self,  num_samples,transform=None, pre_transform=None):
