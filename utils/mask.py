@@ -1,48 +1,7 @@
-import subprocess  # Import the subprocess module
-import os
 import torch
-from torch_geometric.datasets import Planetoid
-from torch_geometric.transforms import NormalizeFeatures
-from torch_geometric.loader import ClusterData, ClusterLoader
-import torch.nn.functional as F
-from torch_geometric.nn import GCNConv
-from torch_geometric.data import NeighborSampler
-import dgl
-import torch.nn as nn
-import torch.optim as optim
-from dgl.nn import GraphConv
-from torch_geometric.nn import GCNConv
-from torch_geometric.nn import SAGEConv
-from torch_geometric.data import DataLoader
-from torch.distributions import Normal
-from torch.distributions.transforms import AffineTransform
-from torch_geometric.data import Dataset
-from torch_geometric.data import Data
-from torch_geometric.loader import DataLoader
-from dgl.data import CoraGraphDataset
-from sklearn.neighbors import NearestNeighbors
-import torch.nn.functional as F
-from torch.distributions import MultivariateNormal
-from torch_geometric.nn import GraphConv
-from sklearn.metrics import f1_score
-from torch_geometric.datasets import Planetoid
-from torch_geometric.nn import GATConv
-from sklearn.preprocessing import StandardScaler
-from torch.optim.lr_scheduler import CosineAnnealingLR
-from torch.optim import AdamW
-from torch.optim.lr_scheduler import ReduceLROnPlateau
-import pandas as pd
-import numpy as np
-import random
-import pickle
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report
-from torch_geometric.data import Data
-from sklearn.model_selection import train_test_split
-
 
 # Load the list of graphs
-dataset = torch.load('/home/users/b/bini/gnn/a_cells_sup/Graph/flat_A7.pt')
+dataset = torch.load('/Graph/flat_A7.pt')
 
 # Print the number of graphs in the final list
 print(f"Number of initial graphs in the list: {len(dataset)}")
