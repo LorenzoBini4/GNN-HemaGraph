@@ -86,7 +86,7 @@ else:
 
 
 ### graph with k=7 from kNN, and nodes have been min-max normalized ###
-data_FC = torch.load('flat_graph.pt')
+data_FC = torch.load('masked_graph.pt')
 
 label0_count=[]
 
