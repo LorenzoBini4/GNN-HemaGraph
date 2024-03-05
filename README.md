@@ -59,3 +59,7 @@ If you find this repository useful, please consider citing the paper. Data can b
   year={2024}
 }
 ```
+
+## Contact
+
+For any questions, please contact the authors or open an issue on GitHub. Data can be available upon request.
