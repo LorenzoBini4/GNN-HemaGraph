@@ -40,7 +40,7 @@ from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_
 import random
 import umap
 import seaborn as sns
-from utils.flat_generation import class_weights
+from utils.weights_gen import class_weights
 import matplotlib.pyplot as plt
 
 # Set seeds for reproducibility
