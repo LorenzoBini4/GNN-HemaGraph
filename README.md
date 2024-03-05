@@ -49,4 +49,4 @@ The main model training scripts are:
 
 ## Citation
 
-If you find this repository useful, please consider citing the paper.
+If you find this repository useful, please consider citing the paper. Data can be available upon request.
