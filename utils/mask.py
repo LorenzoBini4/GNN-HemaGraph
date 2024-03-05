@@ -1,7 +1,7 @@
 import torch
 
 # Load the list of graphs
-dataset = torch.load('/Graph/flat_A7.pt')
+dataset = torch.load('flat_graph.pt')
 
 # Print the number of graphs in the final list
 print(f"Number of initial graphs in the list: {len(dataset)}")
