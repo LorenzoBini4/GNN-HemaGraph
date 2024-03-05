@@ -42,10 +42,10 @@ pip install -r requirements.txt
 
 The main model training scripts are:
 
-- `inductive\train_inductive.py` - model training with inductive learning
-- `train_transductive.py` - model training with transductive learning
-- `fcs2knn.py` - kNN graphs from flow cytometry data
-- `weights_gen.py` - weights generation for taking into account the strong class imbalance
+- `inductive/train_inductive.py` - model training with inductive learning.
+- `trans/train_transductive.py` - model training with transductive learning.
+- `fcs2knn.py` - kNN graphs from flow cytometry data.
+- `utils/mask.py` - masks and weights generation for taking into account the strong class imbalance.
 
 ## Citation
 
