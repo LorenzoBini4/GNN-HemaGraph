@@ -18,7 +18,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 
 # Load the list of masked graphs
-masked_graphs = torch.load('masked_flat_graph.pt')
+masked_graphs = torch.load('masked_graph.pt')
 
 # Define the model
 class HemaGraph(torch.nn.Module):
