@@ -52,12 +52,10 @@ The main model training scripts are:
 If you find this repository useful, please consider citing the paper. Data can be available upon request:
 
 ```bash
-@misc{bini2024hemagraph,
-      title={HemaGraph: Breaking Barriers in Hematologic Single Cell Classification with Graph Attention}, 
-      author={Lorenzo Bini and Fatemeh Nassajian Mojarrad and Thomas Matthes and Stéphane Marchand-Maillet},
-      year={2024},
-      eprint={2402.18611},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.QM}
+@article{bini2024hemagraph,
+  title={HemaGraph: Breaking Barriers in Hematologic Single Cell Classification with Graph Attention},
+  author={Bini, Lorenzo and Mojarrad, Fatemeh Nassajian and Matthes, Thomas and Marchand-Maillet, St{\'e}phane},
+  journal={arXiv preprint arXiv:2402.18611},
+  year={2024}
 }
 ```
