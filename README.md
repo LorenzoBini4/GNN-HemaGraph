@@ -47,8 +47,10 @@ The main model training scripts are:
 - `utils/fcs2knn.py` - kNN graphs from flow cytometry data.
 - `utils/mask.py` - masks and weights generation for taking into account the strong class imbalance.
 
-## Citation
+## Supplementary Material
+- `suppl/HemaGraph_supp.pdf`: Supplementary explanations for coding the hierarchical structure and hierarchical loss in our proposed model.
 
+## Citation
 If you find this repository useful, please consider citing the paper:
 
 ```bash
