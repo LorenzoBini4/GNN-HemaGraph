@@ -45,7 +45,7 @@ class HemaGraph(torch.nn.Module):
     
 # Initialize the GAT model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = HemaGraph(num_features=12, num_classes=5).to(device)
+model = HemaGraph(num_features=12, num_classes=6).to(device)
 
 # Define the optimizer and loss function
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=0.0005)
