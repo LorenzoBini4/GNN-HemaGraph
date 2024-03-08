@@ -123,7 +123,7 @@ class HemaGraph(torch.nn.Module):
         self.conv2 = GATConv(self.hid * self.in_head, self.hid, heads=self.in_head, dropout=0.4)
 
         # Third GAT layer
-        self.conv3 = GATConv(self.hid * self.in_head, 5, concat=False,
+        self.conv3 = GATConv(self.hid * self.in_head, 6, concat=False,
                              heads=self.out_head, dropout=0.4)
 
     def reset_parameters(self):
