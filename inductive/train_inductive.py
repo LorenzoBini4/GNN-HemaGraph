@@ -92,6 +92,9 @@ for j in range(30):
         label0_count.append(len(df))
 #print(label0_count)
 
+# Convert class weights to a PyTorch tensor
+class_weights_tensor = [weights.to(device) for weights in class_weights_tensor]
+
 class MyGraphDataset(Dataset):
     def __init__(self,  num_samples,transform=None, pre_transform=None):
         super(MyGraphDataset, self).__init__(transform, pre_transform)
@@ -146,23 +149,21 @@ class HemaGraph(torch.nn.Module):
     def __repr__(self):
         return self.__class__.__name__
 
-
 # One training epoch for GNN model.
-def train(train_loader, model, optimizer, device, class_weights=None):
+def train(train_loader, model, optimizer, device, class_weights_tensor):
     model.train()
-
-    for data in train_loader:
+    for batch_idx, data in enumerate(train_loader):
         data = data.to(device)
         optimizer.zero_grad()
         output = model(data)
-
-        if class_weights is not None:
-            loss = F.nll_loss(output, data.y, weight=class_weights)
-        else:
-            loss = F.nll_loss(output, data.y)
-
+        # Apply combined mask
+        current_weights = class_weights_tensor[batch_idx]
+        criterion = nn.NLLLoss(weight=current_weights)
+        #criterion = nn.CrossEntropyLoss(weight=current_weights)
+        loss = criterion(output, data.y)
         loss.backward()
         optimizer.step()
+    #return output
 
 # Get acc. of GNN model.
 def test(loader, model, device):
@@ -228,7 +229,7 @@ def gnn_evaluation(gnn, max_num_epochs=1000, batch_size=128, start_lr=0.01, min_
 
             for epoch in range(1, max_num_epochs + 1):
                 lr = scheduler.optimizer.param_groups[0]['lr']
-                train(train_loader, model, optimizer, device, class_weights=train_dataset.class_weights) #class_weights
+                train(train_loader, model, optimizer, device, class_weights_tensor)
                 val_acc = test(val_loader, model, device)
                 scheduler.step(val_acc)
 
