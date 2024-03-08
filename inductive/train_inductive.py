@@ -92,9 +92,6 @@ for j in range(30):
         label0_count.append(len(df))
 #print(label0_count)
 
-# Convert class weights to a PyTorch tensor
-class_weights_tensor = class_weights_tensor.to(device)
-
 class MyGraphDataset(Dataset):
     def __init__(self,  num_samples,transform=None, pre_transform=None):
         super(MyGraphDataset, self).__init__(transform, pre_transform)
