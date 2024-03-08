@@ -38,10 +38,7 @@ import os
 from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score
 import random
-import umap
-import seaborn as sns
 from utils.mask import class_weights_tensor
-import matplotlib.pyplot as plt
 
 # Set seeds for reproducibility
 seed_value = 77  # You can use any integer value
