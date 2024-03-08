@@ -39,6 +39,7 @@ from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score
 import random
 from utils.mask import class_weights_tensor
+import torch.nn as nn
 
 # Set seeds for reproducibility
 seed_value = 77  # You can use any integer value
