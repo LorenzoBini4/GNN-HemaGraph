@@ -16,6 +16,18 @@ import graphviz
 import random
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
+# Set seeds for reproducibility
+seed_value = 77
+
+# Set seed for random module
+random.seed(seed_value)
+
+# Set seed for NumPy
+np.random.seed(seed_value)
+
+# Set seed for PyTorch
+torch.manual_seed(seed_value)
+torch.cuda.manual_seed_all(seed_value)
 
 # Load the list of masked graphs
 masked_graphs = torch.load('masked_graph.pt')
