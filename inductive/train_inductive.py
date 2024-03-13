@@ -42,7 +42,7 @@ from utils.mask import class_weights_tensor
 import torch.nn as nn
 
 # Set seeds for reproducibility
-seed_value = 77  # You can use any integer value
+seed_value = 77
 
 # Set seed for random module
 random.seed(seed_value)
