@@ -54,15 +54,10 @@ class HemaGraph(torch.nn.Module):
         x = self.conv3(x, edge_index)
         return F.log_softmax(x, dim=1)
 
-    
-# Initialize the GAT model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = HemaGraph(num_features=12, num_classes=5).to(device)
-
-# Define the optimizer and loss function
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01, weight_decay=0.0005)
 scheduler = ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, min_lr=0.0000001)
-
 
 # Add a new random mask to each graph  
 for graph in masked_graphs:
@@ -73,7 +68,6 @@ for graph in masked_graphs:
 best_val_loss = float('inf')
 patience = 10 
 counter = 0
-# Move class_weights_tensor to the appropriate device (CPU or GPU)
 class_weights_tensor = [weights.to(device) for weights in class_weights_tensor]
 
 '''
@@ -96,11 +90,8 @@ for epoch in range(1, 101):
         optimizer.zero_grad()
 
         out = model(data.x, data.edge_index)
-
-        # Apply combined mask
         current_weights = class_weights_tensor[masked_graphs.index(graph)]
         criterion = nn.NLLLoss(weight=current_weights)
-        #criterion = nn.NLLLoss()
         loss = criterion(out[full_mask], data.y[full_mask])
 
         loss.backward()
@@ -122,10 +113,8 @@ for epoch in range(1, 101):
         with torch.no_grad():
             out = model(data.x, data.edge_index)
 
-        # Apply combined mask
         current_weights = class_weights_tensor[masked_graphs.index(graph)]
         criterion = nn.NLLLoss(weight=current_weights)
-        #criterion = nn.NLLLoss()
         loss = criterion(out[full_mask], data.y[full_mask])
         val_loss += loss.item()
 
@@ -134,7 +123,6 @@ for epoch in range(1, 101):
 
     # Update the learning rate based on validation loss
     scheduler.step(average_val_loss)
-    # Check for early stopping
     if average_val_loss < best_val_loss:
         best_val_loss = average_val_loss
         counter = 0
