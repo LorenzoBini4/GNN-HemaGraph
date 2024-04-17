@@ -116,13 +116,9 @@ class HemaGraph(torch.nn.Module):
         self.in_head = 8
         self.out_head = 8
 
-        # First GAT layer
+
         self.conv1 = GATConv(12, self.hid, heads=self.in_head, dropout=0.4)
-
-        # Second GAT layer
         self.conv2 = GATConv(self.hid * self.in_head, self.hid, heads=self.in_head, dropout=0.4)
-
-        # Third GAT layer
         self.conv3 = GATConv(self.hid * self.in_head, 5, concat=False,
                              heads=self.out_head, dropout=0.4)
 
@@ -157,7 +153,6 @@ def train(train_loader, model, optimizer, device, class_weights_tensor):
         data = data.to(device)
         optimizer.zero_grad()
         output = model(data)
-        # Apply combined mask
         current_weights = class_weights_tensor[batch_idx]
         criterion = nn.NLLLoss(weight=current_weights)
         #criterion = nn.CrossEntropyLoss(weight=current_weights)
